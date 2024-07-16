@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState, useEffect } from 'react'
 import { useTitle } from 'ahooks'
 import { Typography, Empty, Spin } from 'antd'
 import QuestionCard from '../../components/QuestionCard'
@@ -12,8 +12,10 @@ const { Title } = Typography
 const Star: FC = () => {
   useTitle('天哥问卷 - 星标问卷')
 
-  const { data = {}, loading } = useLoadQuestionListData({ isStar: true })
+  const { data = {}, loading } = useLoadQuestionListData({})
   const { list = [], total = 0 } = data
+
+  const filteredList = list.filter((q: any) => q.isStar)
 
   return (
     <>
@@ -31,13 +33,10 @@ const Star: FC = () => {
             <Spin />
           </div>
         )}
-        {!loading && list.length === 0 && <Empty description="暂无数据" />}
-        {list.length > 0 &&
-          list.map((q: any) => {
-            const { _id, isStart } = q
-            if (!isStart) {
-              return
-            }
+        {!loading && filteredList.length === 0 && <Empty description="暂无数据" />}
+        {filteredList.length > 0 &&
+          filteredList.map((q: any) => {
+            const { _id } = q
             return <QuestionCard key={_id} {...q} />
           })}
       </div>

@@ -18,6 +18,8 @@ const Trash: FC = () => {
   const { data = {}, loading, refresh } = useLoadQuestionListData({ isDeleted: true })
   const { list = [], total = 0 } = data
 
+  const filterList = list.filter((item: any) => item.isDeleted)
+
   // 记录选中的 id
   const [selectedIds, setSelectedIds] = useState<string[]>([])
 

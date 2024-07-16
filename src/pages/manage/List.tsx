@@ -45,9 +45,7 @@ const List: FC = () => {
       onSuccess(result) {
         const { list: l = [], total = 0 } = result
 
-        const tempList = l.filter((item: { isDeleted: boolean }) => {
-          item.isDeleted != true
-        })
+        const tempList = l.filter((item: { isDeleted: boolean }) => item.isDeleted != true)
 
         setList(list.concat(tempList)) // 累计
         setTotal(total)
