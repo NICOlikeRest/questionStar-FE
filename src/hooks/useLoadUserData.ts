@@ -14,13 +14,14 @@ function useLoadUserData() {
     manual: true,
     onSuccess(result) {
       const { username, nickname } = result
+      console.log('123', result)
+
       dispatch(loginReducer({ username, nickname })) // 存储到 redux store
     },
     onFinally() {
       setWaitingUserData(false)
     },
   })
-  console.log(11111)
 
   // 判断当前 redux store 是否已经存在用户信息
   const { username } = useGetUserInfo() // redux store

@@ -1,4 +1,5 @@
-import React, { FC, useEffect } from 'react'
+/* eslint-disable no-debugger */
+import React, { FC, useEffect, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { Typography, Space, Form, Input, Button, Checkbox, message } from 'antd'
 import { UserAddOutlined } from '@ant-design/icons'
@@ -7,6 +8,8 @@ import { REGISTER_PATHNAME, MANAGE_INDEX_PATHNAME } from '../router'
 import { loginService } from '../services/user'
 import { setToken } from '../utils/user-token'
 import styles from './Login.module.scss'
+import { loginReducer } from '../store/userReducer'
+import { useDispatch } from 'react-redux'
 
 const { Title } = Typography
 
@@ -33,11 +36,11 @@ function getUserInfoFromStorage() {
 const Login: FC = () => {
   const nav = useNavigate()
   const [form] = Form.useForm() // 第三方 hook
+  const dispatch = useDispatch()
+  const [name, setName] = useState('')
 
   useEffect(() => {
     const { username, password } = getUserInfoFromStorage()
-    console.log('username', username)
-    console.log('password', password)
     if (username && password) {
       form.setFieldsValue({ username, password })
     }
@@ -51,11 +54,12 @@ const Login: FC = () => {
     {
       manual: true,
       onSuccess(result) {
-        console.log('result', result)
-
         const { token = '' } = result
         setToken(token) // 存储 token
         message.success('登录成功')
+
+        dispatch(loginReducer({ username: name }))
+
         nav(MANAGE_INDEX_PATHNAME) // 导航到“我的问卷”
       },
     },
@@ -63,7 +67,7 @@ const Login: FC = () => {
 
   const onFinish = (values: any) => {
     const { username, password, remember } = values || {}
-
+    setName(username)
     run(username, password) // 执行 ajax
 
     if (remember) {

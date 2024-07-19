@@ -16,7 +16,6 @@ const UserInfo: FC = () => {
 
   // const { data } = useRequest(getUserInfoService) // ajax
   // const { username, nickname } = data || {}
-  console.log(2222)
 
   const { username, nickname } = useGetUserInfo() // 从 redux 中获取用户信息
 
