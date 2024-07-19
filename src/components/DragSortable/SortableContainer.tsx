@@ -27,7 +27,7 @@ const SortableContainer: FC<PropsType> = (props: PropsType) => {
       activationConstraint: {
         distance: 8, // 8px
       },
-    })
+    }),
   )
 
   function handleDragEnd(event: DragEndEvent) {

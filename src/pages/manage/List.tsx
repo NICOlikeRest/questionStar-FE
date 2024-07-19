@@ -51,7 +51,7 @@ const List: FC = () => {
         setTotal(total)
         setPage(page + 1)
       },
-    }
+    },
   )
 
   // 尝试去触发加载 - 防抖
@@ -70,7 +70,7 @@ const List: FC = () => {
     },
     {
       wait: 1000,
-    }
+    },
   )
 
   // 1. 当页面加载，或者 url 参数（keyword）变化时，触发加载

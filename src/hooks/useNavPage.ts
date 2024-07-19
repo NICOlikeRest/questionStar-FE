@@ -11,6 +11,7 @@ import {
 function useNavPage(waitingUserData: boolean) {
   const { username } = useGetUserInfo()
   const { pathname } = useLocation()
+  // eslint-disable-next-line no-debugger
   const nav = useNavigate()
 
   useEffect(() => {
@@ -19,6 +20,7 @@ function useNavPage(waitingUserData: boolean) {
     // 已经登录了
     if (username) {
       if (isLoginOrRegister(pathname)) {
+        // eslint-disable-next-line no-debugger
         nav(MANAGE_INDEX_PATHNAME)
       }
       return

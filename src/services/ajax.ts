@@ -12,7 +12,7 @@ instance.interceptors.request.use(
     config.headers['Authorization'] = `Bearer ${getToken()}` // JWT 的固定格式
     return config
   },
-  error => Promise.reject(error)
+  error => Promise.reject(error),
 )
 
 // response 拦截：统一处理 errno 和 msg

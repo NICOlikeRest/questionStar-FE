@@ -19,7 +19,7 @@ function useLoadQuestionData() {
     },
     {
       manual: true,
-    }
+    },
   )
 
   // 根据获取的 data 设置 redux store

@@ -24,7 +24,7 @@ const ChartStat: FC<PropsType> = (props: PropsType) => {
       onSuccess(res) {
         setStat(res.stat)
       },
-    }
+    },
   )
 
   useEffect(() => {

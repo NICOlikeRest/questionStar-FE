@@ -20,6 +20,7 @@ function useLoadUserData() {
       setWaitingUserData(false)
     },
   })
+  console.log(11111)
 
   // 判断当前 redux store 是否已经存在用户信息
   const { username } = useGetUserInfo() // redux store
@@ -28,6 +29,7 @@ function useLoadUserData() {
       setWaitingUserData(false) // 如果 redux store 已经存在用户信息，就不用重新加载了
       return
     }
+
     run() // 如果 redux store 中没有用户信息，则进行加载
   }, [username])
 

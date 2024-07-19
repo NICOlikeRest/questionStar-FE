@@ -40,7 +40,7 @@ const QuestionCard: FC<PropsType> = (props: PropsType) => {
         setIsStarState(!isStarState) // 更新 state
         message.success('已更新')
       },
-    }
+    },
   )
 
   // 复制
@@ -56,7 +56,7 @@ const QuestionCard: FC<PropsType> = (props: PropsType) => {
         message.success('复制成功')
         nav(`/question/edit/${result.id}`) // 跳转到问卷编辑页
       },
-    }
+    },
   )
 
   // 删除
@@ -69,7 +69,7 @@ const QuestionCard: FC<PropsType> = (props: PropsType) => {
         message.success('删除成功')
         setIsDeletedState(true)
       },
-    }
+    },
   )
 
   function del() {

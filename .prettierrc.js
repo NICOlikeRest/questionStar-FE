@@ -6,7 +6,7 @@ module.exports = {
   // 行结束符使用 Unix 格式
   endOfLine: 'lf',
   // true: Put > on the last line instead of at a new line
-  jsxBracketSameLine: false,
+  bracketSameLine: false,
   // 行宽
   printWidth: 100,
   // 换行方式

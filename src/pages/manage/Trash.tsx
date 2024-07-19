@@ -38,7 +38,7 @@ const Trash: FC = () => {
         refresh() // 手动刷新列表
         setSelectedIds([])
       },
-    }
+    },
   )
 
   // 删除
@@ -51,7 +51,7 @@ const Trash: FC = () => {
         refresh()
         setSelectedIds([])
       },
-    }
+    },
   )
 
   function del() {

@@ -17,4 +17,9 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {},
+  settings: {
+    react: {
+      version: 'detect', // 自动检测 React 版本
+    },
+  },
 }

@@ -1,4 +1,4 @@
-import React, { FC, useState, ChangeEvent } from 'react'
+import React, { FC, useState, ChangeEvent, useTransition } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { Button, Typography, Space, Input, message } from 'antd'
@@ -56,7 +56,7 @@ const SaveButton: FC = () => {
       if (!id) return
       await updateQuestionService(id, { ...pageInfo, componentList })
     },
-    { manual: true }
+    { manual: true },
   )
 
   // 快捷键
@@ -73,11 +73,21 @@ const SaveButton: FC = () => {
     [componentList, pageInfo],
     {
       wait: 1000,
-    }
+    },
   )
 
+  const handleSave = () => {
+    if (pageInfo.title == '') {
+      message.error('请输入标题')
+      return
+    }
+    console.log('save')
+
+    save()
+  }
+
   return (
-    <Button onClick={save} disabled={loading} icon={loading ? <LoadingOutlined /> : null}>
+    <Button onClick={handleSave} disabled={loading} icon={loading ? <LoadingOutlined /> : null}>
       保存
     </Button>
   )
@@ -85,6 +95,7 @@ const SaveButton: FC = () => {
 
 // 发布按钮
 const PublishButton: FC = () => {
+  const [isPending, startTransition] = useTransition()
   const nav = useNavigate()
   const { id } = useParams()
   const { componentList = [] } = useGetComponentInfo()
@@ -105,12 +116,22 @@ const PublishButton: FC = () => {
         message.success('发布成功')
         nav('/question/stat/' + id) // 发布成功，跳转到统计页面
       },
-    }
+    },
   )
 
+  const handlePub = () => {
+    if (pageInfo.title == '') {
+      message.error('请输入标题')
+      return
+    }
+    startTransition(() => {
+      pub()
+    })
+  }
+
   return (
-    <Button type="primary" onClick={pub} disabled={loading}>
-      发布
+    <Button type="primary" onClick={handlePub} disabled={loading || isPending}>
+      {isPending ? '发布中...' : '发布'}
     </Button>
   )
 }

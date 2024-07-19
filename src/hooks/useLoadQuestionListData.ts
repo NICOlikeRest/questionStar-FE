@@ -28,7 +28,7 @@ function useLoadQuestionListData(opt: Partial<OptionType> = {}) {
     },
     {
       refreshDeps: [searchParams], // 刷新的依赖项
-    }
+    },
   )
 
   return { data, loading, error, refresh }

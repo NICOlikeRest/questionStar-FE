@@ -46,14 +46,14 @@ export const componentsSlice = createSlice({
       (draft: ComponentsStateType, action: PayloadAction<ComponentInfoType>) => {
         const newComponent = action.payload
         insertNewComponent(draft, newComponent)
-      }
+      },
     ),
 
     // 修改组件属性
     changeComponentProps: produce(
       (
         draft: ComponentsStateType,
-        action: PayloadAction<{ fe_id: string; newProps: ComponentPropsType }>
+        action: PayloadAction<{ fe_id: string; newProps: ComponentPropsType }>,
       ) => {
         const { fe_id, newProps } = action.payload
 
@@ -65,7 +65,7 @@ export const componentsSlice = createSlice({
             ...newProps,
           }
         }
-      }
+      },
     ),
 
     // 删除选中的组件
@@ -101,7 +101,7 @@ export const componentsSlice = createSlice({
         if (curComp) {
           curComp.isHidden = isHidden
         }
-      }
+      },
     ),
 
     // 锁定/解锁 组件
@@ -113,7 +113,7 @@ export const componentsSlice = createSlice({
         if (curComp) {
           curComp.isLocked = !curComp.isLocked
         }
-      }
+      },
     ),
 
     // 拷贝当前选中的组件
@@ -164,20 +164,20 @@ export const componentsSlice = createSlice({
         const { title, fe_id } = action.payload
         const curComp = draft.componentList.find(c => c.fe_id === fe_id)
         if (curComp) curComp.title = title
-      }
+      },
     ),
 
     // 移动组件位置
     moveComponent: produce(
       (
         draft: ComponentsStateType,
-        action: PayloadAction<{ oldIndex: number; newIndex: number }>
+        action: PayloadAction<{ oldIndex: number; newIndex: number }>,
       ) => {
         const { componentList: curComponentList } = draft
         const { oldIndex, newIndex } = action.payload
 
         draft.componentList = arrayMove(curComponentList, oldIndex, newIndex)
-      }
+      },
     ),
   },
 })

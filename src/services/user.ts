@@ -11,7 +11,7 @@ export async function getUserInfoService(): Promise<ResDataType> {
 export async function registerService(
   username: string,
   password: string,
-  nickname?: string
+  nickname?: string,
 ): Promise<ResDataType> {
   const url = '/api/user/register'
   const body = { username, password, nickname: nickname || username }

@@ -12,6 +12,9 @@ export const userSlice = createSlice({
   initialState: INIT_STATE,
   reducers: {
     loginReducer: (state: UserStateType, action: PayloadAction<UserStateType>) => {
+      // eslint-disable-next-line no-debugger
+      console.log('action', action)
+
       return action.payload // 设置 username nickname 到 redux store
       // 用不到 immer
     },

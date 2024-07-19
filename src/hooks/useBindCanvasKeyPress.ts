@@ -67,7 +67,7 @@ function useBindCanvasKeyPress() {
     },
     {
       exactMatch: true, // 严格匹配
-    }
+    },
   )
 
   // 重做

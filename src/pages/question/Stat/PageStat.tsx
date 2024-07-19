@@ -35,7 +35,7 @@ const PageStat: FC<PropsType> = (props: PropsType) => {
         setTotal(total)
         setList(list)
       },
-    }
+    },
   )
 
   const { componentList } = useGetComponentInfo()

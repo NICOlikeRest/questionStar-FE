@@ -23,7 +23,7 @@ const Register: FC = () => {
         message.success('注册成功')
         nav(LOGIN_PATHNAME) // 跳转到登录页
       },
-    }
+    },
   )
 
   const onFinish = (values: any) => {
